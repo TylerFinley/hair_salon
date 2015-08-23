@@ -27,18 +27,3 @@
 
 <button class="btn"><a href="/stylists">Stylists</a></button>
 <button class="btn"><a href="/">Home</a></button>
-
-<!-- DELETE -->
-<% if @clients.any?() %>
-<br>
-<label for="remove-client-form">Remove a Client</label>
-  <form class="remove-client-form" id="remove-client-form" action="/clients" method="post">
-  <input type="hidden" name="_method" value="delete">
-    <div class="form-group">
-      <label for="client_select">Stylist</label>
-      <select id="client_select" name="client_select" type="text" class="form-control">
-        <% @clients.each() do |client| %>
-          <option value="<%= client.id() %>"><%= client.name() %></option>
-        <% end %>
-      </select>
-<% end %>
