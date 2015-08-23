@@ -1,0 +1,64 @@
+<h1>Clients</h1>
+
+<form id="form_id" action="/clients" method="post" class="form-inline">
+  <div class="form-group">
+
+    <label for="client_name" class="sr-only">client:</label>
+    <div class="input-group">
+      <input type="text" name="client_name" id="client_name" class='form-control'>
+    </div>
+
+    <button class="btn" type="submit">Add client</button>
+  </div>
+</form>
+
+<% if @clients.any?() %>
+
+    <% @clients.each() do |client| %>
+
+    <ul><li>
+        <a href="/clients/<%= client.id()%>"><%= client.name() %></a>
+</li></ul>
+    <% end %>
+<% else %>
+  <p>There are no clients yet</p>
+<% end %>
+
+
+<button class="btn"><a href="/stylists">Stylists</a></button>
+<button class="btn"><a href="/">Home</a></button>
+
+<!-- DELETE -->
+<% if @clients.any?() %>
+<br>
+<label for="remove-client-form">Remove a Client</label>
+  <form class="remove-client-form" id="remove-client-form" action="/clients" method="post">
+  <input type="hidden" name="_method" value="delete">
+    <div class="form-group">
+      <label for="client_select">Stylist</label>
+      <select id="client_select" name="client_select" type="text" class="form-control">
+        <% @clients.each() do |client| %>
+          <option value="<%= client.id() %>"><%= client.name() %></option>
+        <% end %>
+      </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Remove Client</button>
+  </form>
+<% end %>
+<!-- DELETE -->
+<% if @clients.any?() %>
+<br>
+<label for="remove-client-form">Remove a Client</label>
+  <form class="remove-client-form" id="remove-client-form" action="/clients" method="post">
+  <input type="hidden" name="_method" value="delete">
+    <div class="form-group">
+      <label for="client_name">Stylist</label>
+      <select id="client_name" name="client_name" type="text" class="form-control">
+        <% @clients.each() do |client| %>
+          <option value="<%= client.id() %>"><%= client.name() %></option>
+        <% end %>
+      </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Remove Client</button>
+  </form>
+<% end %>

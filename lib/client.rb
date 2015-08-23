@@ -4,7 +4,7 @@ class Client
   define_method(:initialize) do |attributes|
     @name = attributes[:name]
     @id = attributes[:id]
-    @stylist_id = attributes[:stylists_id].to_i()
+    @stylists_id = attributes[:stylists_id].to_i()
   end
 
   define_singleton_method (:all) do
@@ -13,8 +13,8 @@ class Client
     clients.each() do |client|
       name = client.fetch('name')
       id = client.fetch('id').to_i()
-      stylist_id = client.fetch('stylists_id').to_i()
-      all_clients.push(Client.new({:name => name, :id => id, :stylists_id => stylists_id}))
+      stylist_ids = client.fetch('stylists_id').to_i()
+      all_clients.push(Client.new({:name => name, :id => id}))
     end
     all_clients
   end
@@ -35,8 +35,8 @@ class Client
     results = DB.exec("SELECT * FROM clients WHERE id = #{id};")
     results.each() do |result|
       name = result.fetch("name")
-      stylist_id = result.fetch("stylist_id").to_i()
-      found_client = Client.new({:name => name, :id => id, :stylist_id => stylist_id})
+      stylists_id = result.fetch("stylists_id").to_i()
+      found_client = Client.new({:name => name, :id => id})
     end
     found_client
   end

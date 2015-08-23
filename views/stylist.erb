@@ -1,0 +1,45 @@
+<div class="stylist">
+
+  <h2>Add Client to <span><%= @stylist.name() %></span></h2>
+
+  <form class="" action="/clients" method="post">
+    <input id="stylists_id" name="stylists_id" type="hidden" value="<%= @stylist.id()%>">
+
+    <label for="client_name" class="sr-only"></label>
+    <input id="client_name" name="client_name" type="text" placeholder="client name...">
+
+    <button type="submit" class="btn">Add Client</button>
+  </form>
+
+  <h3>Clients</h3>
+
+    <% if @stylist_clients.any?() %>
+      <table class="table borderless">
+        <thead>
+          <tr>
+            <th></th>
+          </tr>
+        </thead>
+        <% @stylist_clients.each() do |client| %>
+        <tbody>
+          <td>
+            <a href="/clients/<%= client.id()%>"><%= client.name() %></a>
+          </td>
+        </tbody>
+        <% end %>
+      </table>
+    <% else %>
+      <p><span><%= @stylist.name() %></span> has no clients yet</p>
+    <% end %>
+
+
+  <button class="btn"><a href="/stylists/<%= @stylist.id() %>/edit">Edit Stylist</a></button>
+
+  <form action ='/stylists' method="post">
+    <input name="_method" type="hidden" value="delete">
+    <input name="stylists_id" id="stylists_id" type="hidden" value="<%= @stylist.id()%>">
+    <button class="btn" type="submit">Delete Stylist</a>
+  </form>
+<<a href="#"></a>
+  <button class="btn"><a href="/">Home</a></button>
+</div>

@@ -1,0 +1,14 @@
+<h1>Client: <%= @client.name() %></h1>
+
+<div class="col-xs-12">
+  <button class="btn"><a href="/clients/<%= @client.id() %>/edit">Edit Client name</a></button>
+</div>
+
+<form action ='/clients' method="post">
+  <input name="_method" type="hidden" value="delete">
+  <input name="client_id" id="client_id" type="hidden" value="<%= @client.id()%>">
+
+  <button class="btn" style="margin-top: 5px" type="submit">Delete Customer</a>
+</form>
+
+<button class="btn"><a href="/">Home</a></button>

@@ -1,0 +1,19 @@
+<div class="update-client">
+  <h1>Update Client: <%= @client.name() %> </h1>
+
+  <div class="form-group">
+    <form action="/clients/<%= @client.id() %>" method="post" class="form-inline">
+      <input name="_method" type="hidden" value="patch">
+
+      <label for="client_name" class="sr-only"></label>
+      <div class="input-group">
+        <input id="client_name"  class="form-control" name="client_name" type="text"  placeholder="Rename...">
+      </div>
+
+      <button class="btn" type="submit">Update</button>
+    </form>
+  </div>
+</div>
+
+<button class="btn"><a href="/stylists">Stylists</a></button>
+<button class="btn"><a href="/clients">Clients</a></button>

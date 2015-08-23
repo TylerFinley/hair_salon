@@ -1,0 +1,41 @@
+<div class="stylists">
+  <h1>Add Stylist</h1>
+
+  <form id="form_id" action="/stylists" method="post" class="form-inline">
+    <div class="form-group">
+
+      <label for="stylist_name" class="sr-only">Stylist Name:</label>
+      <div class="input-group">
+        <input type="text" name="stylist_name" id="stylist_name" class='form-control'>
+      </div>
+
+      <button class="btn" type="submit">Add Stylist</button>
+    </div>
+  </form>
+
+
+  <h1>Stylists</h1>
+
+  <% if @all_stylists.any?() %>
+    <% @all_stylists.each() do |stylist| %>
+
+      <ul>
+<li>
+        <a href="/stylists/<%= stylist.id()%>"><%= stylist.name() %></a>
+    </li>  </ul
+
+    <% end %>
+
+  <% else %>
+    <p>There are currently no stylists.</p>
+  <% end %>
+
+
+
+
+
+
+  <p>
+
+  <button class="btn"><a href="/">Home</a></button>
+</p>
